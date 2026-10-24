@@ -72,7 +72,7 @@ Anything you like goes there — an email, an X or Telegram handle, a Discord, a
 
 **What we never do with it:** no newsletter, no announcements, no marketing, no "we thought you'd be interested in", no selling it, no sharing it, no passing it to anyone else for any reason. It is not a mailing list and it will never become one.
 
-**Where it lives.** In the pull request description — **not in your directory entry.** Public markdown gets scraped by address harvesters within days, and we're not going to be the reason your inbox fills up. We keep it privately and only while your entry is listed. Ask us to delete it and we will, and your listing is unaffected.
+**Where it lives.** In the pull request description, not in your directory entry. **This repository is public, so anyone can read a pull request description, and GitHub keeps its edit history.** Only put a contact there that you're comfortable having public: a project address, a handle, or a contact form, not a personal inbox. If you'd rather not share one at all, leave it out and we'll open an issue on your repo instead.
 
 **Where this breaks, honestly.** A lot of entries are a bare endpoint with no repo. For those we have no way to reach anyone, and a dead endpoint just moves to departures. That's the gap this line exists to close, one entry at a time.
 
@@ -130,7 +130,7 @@ The unit of a listing is the **service**, not the provider.
 
    Endpoints without an `Example:` line are probed with `{}` (existing behavior).
 
-6. **Optionally, tell us how to reach you** — add a `Contact:` line to the PR description:
+6. **Optionally, tell us how to reach you** — add a `Contact:` line to the PR description. It's public, so use an address you don't mind being seen:
 
    ```
    Contact: you@example.com
