@@ -46,9 +46,9 @@ For a **service** — an API, MCP server, facilitator, or anything with a live e
 - **An agent can actually reach it.** Give us the URL where the 402 lives — the endpoint itself, or a `/.well-known/x402` manifest that points at it. Not a homepage that a person has to read their way out of.
 - **A working example request**, if your endpoint needs parameters. A method and a minimal body is plenty: `POST /v1/quote  {"symbol":"BTC"}`. If a caller has to guess the shape, they can't buy from you.
 
-For a **library, framework, or learning/community resource** with no payable endpoint of its own: it must be publicly accessible (live URL or public repo), demonstrably x402-specific, active within roughly the last twelve months, and described in one factual line.
+For a **library, framework, or learning/community resource** with no payable endpoint of its own: it must be publicly accessible (live URL or public repo), demonstrably x402-specific, with a commit or release in the last 12 months (an older resource that still matters, such as a finished spec, needs a maintainer's exception written on its PR), and described in one factual line.
 
-We probe every submitted endpoint before merging. Anything that fails gets a friendly note explaining what to fix — never a silent rejection. Fix it and resubmit.
+We probe every submitted endpoint before merging. Every submission that fails gets a comment saying what failed and how to fix it — never a silent rejection. Fix it and resubmit.
 
 **Why we ask for the last two.** An agent can only pay for what it can find and call. A homepage isn't a door, and an undocumented request shape is a locked one. So we ask for the door, and the shape of the knock.
 
@@ -82,7 +82,7 @@ gold-402 has **no stamp and no tiers.** There was a single-tier mark — "listed
 
 Every entry now carries the finding rather than a mark:
 
-- **A date** — the endpoint answered an HTTP 402 when we knocked it, on that day. The submission gate checks it, a maintainer confirms before merge, and a sweep re-knocks and writes a dated result.
+- **A date** — the endpoint answered an HTTP 402 when we knocked it, on that day. The submission gate checks it, a maintainer confirms before merge, and a sweep re-knocks every listed endpoint every night and writes a dated result.
 - **"listed — no knock receipt"** — a human read it; we hold no dated knock and will not backfill one.
 - **"listed — no endpoint to knock"** — libraries, guides, wallets, clients, community resources. Nothing here answers a 402 because that is not what these things do.
 
@@ -92,7 +92,7 @@ That is the whole claim. It is **not** an audit of the provider, a guarantee of 
 
 ## When a service stops answering
 
-A listing that stops answering our knock isn't deleted. It moves to departures with the date it first failed, and the site shows a running count — "no answer for N days" — from that date. If it comes back, it's restored and the record shows it returned. The dates are the point: they're how a reader can tell a service that's been solid for months from one that came back yesterday.
+A listing that fails our knock on two different days isn't deleted. It moves to departures with the date it first failed, and the site shows a running count — "no answer for N days" — from that date. If it comes back, it's restored and the record shows it returned. The dates are the point: they're how a reader can tell a service that's been solid for months from one that came back yesterday.
 
 ## One entry per service (multiple services welcome)
 
@@ -146,7 +146,8 @@ On the 1st of each month the maintainers select one **Featured** pick per shelf,
 
 - **Weekly** — refresh **New This Week** (the week's additions).
 - **Monthly** — rotate the Featured slate (one pick per shelf) and archive the previous month to `FEATURED.md`.
-- **Ongoing** — probe listed endpoints for liveness, move dead entries to departures, and scan the ecosystem for new entries worth adding.
+- **Nightly** — knock every listed endpoint and move dead entries to departures.
+- **Ongoing** — scan the ecosystem for new entries worth adding.
 
 ---
 
