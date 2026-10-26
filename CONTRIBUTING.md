@@ -98,9 +98,11 @@ A listing that fails our knock on two different days isn't deleted. It moves to 
 
 The unit of a listing is the **service**, not the provider.
 
-- **Different services from the same provider are each welcome** — one entry each, in the section each belongs to. A provider running, say, a code-review API and an image-generation API gets two entries, because a builder searching for one won't find it buried inside the other.
-- **The same service listed twice is a duplicate** — that's the thing we don't take. One endpoint cross-posted into several categories to look bigger is what to avoid; each service has one home, its primary category.
-- **Prefer one entry per pull request.** It keeps diffs clean and lets us verify and merge each independently. But a PR with several genuinely distinct, valid entries is fine — we may split it across commits on merge.
+- **Different services from the same provider are each welcome**: one entry each, in the section each belongs to.
+- **A separate service is one a builder would search for on its own.** Routes of one API share one line: `/audit`, `/links` and `/quote` on the same host are one service, with their prices in that line.
+- **A wrapper is its own entry when it speaks a different protocol**, such as an MCP server over a provider's HTTP APIs. Its line says what it wraps and links the wrapper's own address, not the upstream one.
+- **The same service listed twice is a duplicate.** That's the thing we don't take.
+- **Prefer one entry per pull request.** A PR with several genuinely distinct, valid entries is fine.
 
 ## Entry Format
 
