@@ -102,6 +102,7 @@ The unit of a listing is the **service**, not the provider.
 - **A separate service is one a builder would search for on its own.** Routes of one API share one line: `/audit`, `/links` and `/quote` on the same host are one service, with their prices in that line.
 - **A wrapper is its own entry when it speaks a different protocol**, such as an MCP server over a provider's HTTP APIs. Its line says what it wraps and links the wrapper's own address, not the upstream one.
 - **The same service listed twice is a duplicate.** That's the thing we don't take.
+- **Listings paid to the same wallet are shown together.** When two or more listings name the same payTo address in their 402 answers, each listing's page on 24klabs.ai says so and links the others. It covers listings that answer 402 to a plain request, and the page shows the date it was read.
 - **Prefer one entry per pull request.** A PR with several genuinely distinct, valid entries is fine.
 
 ## Entry Format
