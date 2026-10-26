@@ -13,6 +13,7 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 ### Unfiled
 
 - [Orders of Magnitude](https://x402-api-production-5133.up.railway.app/x402.json) — Unified pay-per-call access to 1,100+ public and utility API endpoints through one wallet. $0.003–$0.10 per call, machine-readable manifest at `/x402.json` (mirrored at `/.well-known/x402`). x402 v2, USDC on Base.
+- [402Signal](https://402signal.com/route) — Fail-closed live-endpoint x402 router. POST /route returns a currently-alive x402 URL or an honest miss. Authorizes $0.003 USDC on Base, Solana, and Algorand; settles only when a live eligible route is found, so a typed miss is not charged. Example: POST {"need":"weather"}. ([OpenAPI](https://402signal.com/openapi.json)) ([MCP](https://402signal.com/mcp.json)) ([Manifest](https://402signal.com/.well-known/x402.json))
 
 ## apis
 
@@ -20,6 +21,16 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 
 - [MOSS Agent](https://moss.chobon.top) — AI-powered coding services: code review ($0.005), translation ($0.003), code explanation ($0.003). A2A protocol compatible.
 - [RGX](https://rgx.tail817c3b.ts.net) — Snap Router: task-to-tool selection over the merged x402 Bazaar and MCP Registry catalog (16k+ entries), one pass, no LLM call, $0.003 USDC. Example: `POST /v1/snap?x402force=1 {"task":"check a base token for honeypot","k":4}`. Pricing-Truth: real tradeable depth vs headline TVL, depth-weighted multi-pool price corroboration, and a live buy-then-sell honeypot/transfer-tax check for tokens on Base, Ethereum, and Arbitrum, $0.005-$0.04 USDC. Example: `GET /v1/base/token/0x532f27101965dd16442E59d40670FaF5eBB142E4/report?x402force=1`. Free tier, CDP facilitator. ([Manifest](https://rgx.tail817c3b.ts.net/.well-known/x402)) ([OpenAPI](https://rgx.tail817c3b.ts.net/openapi.json)) ([llms.txt](https://rgx.tail817c3b.ts.net/llms.txt)) ([MCP](https://pypi.org/project/rgx-mcp/))
+- [TinyOps Automation Integration Preflight](https://x402-preflight.tinyopsstudio.com/analyze) — Inspects a public webpage for automation readiness: integration links, forms, robots policy, security headers, and implementation acceptance criteria. `POST` only, $0.03 USDC on Base mainnet. Example: `{"url":"https://example.com"}`. ([Service page](https://tinyopsstudio.com/automation-preflight-api.html))
+- [ViewportWitness](https://qa.honeygate.app/v1/checks) — Checks public websites before deployment across phone portrait, phone landscape, and desktop with screenshots, accessibility findings, browser errors, and layout evidence; also offers explicit assertions, visual regression comparison, DOM-to-Markdown extraction, and passive release-security checks through HTTP and six MCP tools, plus a client for release checks of up to five pages with a spending ceiling and shareable Markdown results. `POST /v1/checks`, $0.08 USDC per page via x402 on Base or Solana mainnet; paid calls require an x402-capable client. Example: `{"url":"https://example.com"}`. ([OpenAPI](https://qa.honeygate.app/openapi.json)) ([Agent guide](https://qa.honeygate.app/llms.txt)) ([Release-check client](https://github.com/Baffles78/viewport-witness/blob/main/docs/GROWTH-ACTIVATION.md)) ([GitHub](https://github.com/Baffles78/viewport-witness))
+- [Clarity](https://desktop-o99r0sf.tail935fba.ts.net/.well-known/x402) — Base mainnet x402 gateway for external USDC payers: OpenAI-compatible chat ($0.001) and short research/verdict reports ($2) via local Ollama. No API keys. Example: `POST /v1/x402/report {"topic":"x402 agent commerce on Base","max_words":400}`. ([OpenAPI](https://desktop-o99r0sf.tail935fba.ts.net/openapi.json)) ([Buy](https://desktop-o99r0sf.tail935fba.ts.net/static/buy.md)) ([Buyer walkthrough](https://desktop-o99r0sf.tail935fba.ts.net/static/buyer.md))
+- [Zugabot Code Agent](https://zugabot.ai/.well-known/x402.json) — AI developer services via x402: code review ($0.25), bug fix ($0.25), security audit ($0.50), architecture review ($3.00), full-repo audit ($5.00), plus test generation, docs, refactor, PR review. USDC on Base.
+- [Zugabot Image Generation](https://zugabot.ai/api/x402/agent/image-generate) — Text-to-image generation via x402: FLUX Schnell ($0.15) or FLUX 2 Pro ($0.50), returns image URL plus dimensions and seed. USDC on Base. `POST` to the endpoint; storefront at [zugabot.ai/x402](https://zugabot.ai/x402).
+- [GPT55 Model Gateway](https://gpt55.558686.xyz/v1/chat/completions/standard) — OpenAI-compatible GPT-5.6 Luna Standard chat completions via x402 USDC on Base for $0.00293 per POST request.
+- [crosscheck](https://crosscheckapi.com/v1/check) — Reviews an AI agent's draft before its human sees it and returns pass or specific issues with fixes, recomputing the draft's arithmetic in code and, when sources are sent, checking each claim against them with quotes verified in code; every result carries an Ed25519-signed receipt. $0.02 USDC on Base mainnet. Example: `POST /v1/check {"draft":"Q3 revenue was $1,200 + $450 = $1,560."}`. ([llms.txt](https://crosscheckapi.com/llms.txt)) ([GitHub](https://github.com/maxugc/crosscheck))
+- [crosscheck accept](https://crosscheckapi.com/v1/accept) — Checks work one agent hands another against the task it was given, before the buyer pays or releases escrow, and returns accept, reject, or needs an outside check with each requirement judged; counts, required JSON fields, and sums are recomputed in code, and an optional payment transaction is verified on chain and bound to the signed receipt. $0.03 USDC on Base mainnet. Example: `POST /v1/accept {"task":"List three prime numbers as a JSON array.","deliverable":"[2, 3, 4]"}`. ([llms.txt](https://crosscheckapi.com/llms.txt)) ([GitHub](https://github.com/maxugc/crosscheck))
+- [Agent Hub](https://agents.torbrooknews.com/.well-known/x402) — 48 pay-per-call tools for agents behind one wallet: web search, page-to-Markdown, scraping and JSON extraction, PDF and screenshots, LLM chat, speech-to-text and text-to-speech, translation, image generation and OCR, embeddings and reranking, SEC filings, papers, crypto prices, token risk reports, DeFi yields, perp funding rates and Polymarket odds; $0.002–$0.03 USDC on Base, Polygon, Arbitrum or World Chain, and failed calls are not billed. Example: `GET https://agents.torbrooknews.com/v1/weather?place=Toronto`. ([OpenAPI](https://agents.torbrooknews.com/openapi.json)) ([llms.txt](https://agents.torbrooknews.com/llms.txt)) ([Status](https://agents.torbrooknews.com/status))
+- [AgentRXI](https://agentrxi.com/.well-known/x402) — 232 pay-per-call tools for agents behind one wallet: 22 OpenAI-compatible LLMs priced per token, web search and crawling, a rentable browser, code sandbox, OCR and Office conversion, ffmpeg media conversion, vision (ask about or locate objects in images), image generation, email sending, multi-agent rooms and task queues, file storage, SQL and vector memory, UK KYB and Know-Your-Agent wallet checks, US economic data and maps. From $0.002 per call in USDC on Base, Polygon, Arbitrum or World Chain; failed calls are never charged. ([Site](https://agentrxi.com)) ([OpenAPI](https://agentrxi.com/openapi.json)) ([llms.txt](https://agentrxi.com/llms.txt))
 
 ### Business Intelligence
 
@@ -37,6 +48,12 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 - [Hodler DeFi Intelligence](https://x402.hodle.com.br) — Stablecoin monitoring, redeem arbitrage, cross-chain pair discovery across 10 EVM chains. 6 paid endpoints at $0.01 USDC via xpay.sh on Base.
 - [On-Chain Activity Index](https://onchain-activity-index-325572559480.us-central1.run.app) — 0-100 quantitative DeFi Protocol Activity Index computed from real public DefiLlama data (TVL trend, fee/volume activity trend, chain diversification); explicitly a descriptive index, not trading advice. $0.30 USDC on Base Sepolia (testnet) via x402. Example: `POST /activity-index {"protocol_slug":"uniswap"}`. ([OpenAPI](https://onchain-activity-index-325572559480.us-central1.run.app/openapi.json)) ([Agent Card](https://onchain-activity-index-325572559480.us-central1.run.app/.well-known/agent-card.json)) ([GitHub](https://github.com/nexus-mcp-infra/onchain-activity-index))
 - [x402 Crypto Research API](https://x402-crypto-research-api-production.up.railway.app/research) — Generates current, source-linked cryptocurrency ecosystem research reports for 0.01 USDC per POST request on Base mainnet. Example: `{"topic":"Give a concise current status update on the Base ecosystem."}`. ([GitHub](https://github.com/stgzwpzy8w-eng/x402-crypto-research-api))
+- [AgentServices](https://agentservices.to/.well-known/x402.json) — Paid data APIs for AI agents: crypto prices, technical indicators, DeFi yields, IP geolocation, and URL metadata. $0.00-$0.02 USDC on Base. ([x402](https://agentservices.to/.well-known/x402))
+- [Polymarket Liquidity API](https://polymarket-liquidity-api.tatsu77.workers.dev/.well-known/x402) — Real-time Polymarket liquidity data. Order book depth, spread analysis, market efficiency scoring. $0.005 USDC on Base.
+- [bilbop Solana Mint Info](https://api.bilbop.org/v1/sol-mint-info) — Returns on-chain supply, decimals and mint/freeze authorities for a Solana SPL mint for 0.01 USDC on Solana per POST call.
+- [fly.ai](https://flyai-x402.fly.dev/.well-known/x402) — Robinhood Chain trade costs (`GET /cost/{ticker}`, $0.02), token checks (`GET /token/{address}`, $0.03), TimesFM forecasts (`GET /forecast/{ticker}`, $0.03), USDG lending yields (`GET /yield?token=USDG&amount=1000`, $0.02), a Polymarket read (`GET /picks`, $0.05) and runs of a real fruit-fly connectome (`GET /brain?sense=threat`, $0.05). USDG on Robinhood Chain or USDC on Base. Example: `GET /cost/NVDA`. ([Guide](https://www.flyaiworld.com/x402-api.md)) ([OpenAPI](https://flyai-x402.fly.dev/openapi.json)) ([Skill](https://github.com/alextitonis/fly.ai/tree/main/skills/flyai-x402))
+- [Tollex](https://api.tollex.org/tools/chain_get_block) — Robinhood Chain mainnet data for agents (blocks, transactions, logs, balances, USDG and stock tokens; 34 capabilities) paid per call over x402 v2 in USDC on Base or USDG on Robinhood Chain, each response with a signed execution receipt. Call with `POST`.
+- [BTC Intel](https://9eouter-0f49c8.abyte.my.id/.well-known/x402) — Live Stacks/Bitcoin market intelligence for AI agents: STX/BTC/USD spot, STX-BTC ratio and sats-per-STX; live PoX cycle (stacked ustx, cycle phases, block height); Bitcoin fee tiers plus Stacks mempool fee recommendations; sBTC supply on Stacks; npm/PyPI dependency version and health lookups. Dual-rail x402: USDC on Base (eip155:8453) or STX on Stacks mainnet, $0.01/call, no API keys or accounts. Example: `GET /market`. ([OpenAPI](https://9eouter-0f49c8.abyte.my.id/openapi.json)) ([llms.txt](https://9eouter-0f49c8.abyte.my.id/llms.txt)) ([Discovery](https://9eouter-0f49c8.abyte.my.id/.well-known/x402))
 
 ### Data & Research
 
@@ -48,6 +65,12 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 - [TaskMarket Data API](https://site-wine-nu-93.vercel.app/api/tm_list_tasks) — Read-only TaskMarket bounty-market data for AI agents: list open tasks (rewards, deadlines, submission demand), full task details by ID, per-task submissions. $0.001/call USDC on Base via x402 v1 exact scheme (EIP-3009) — real on-chain enforcement through the non-custodial xpay facilitator, no CDP key needed. Unpaid requests get a spec-compliant 402 with payment terms. Built by Autonomy Labs, an autonomous AI agent. ([Discovery](https://site-wine-nu-93.vercel.app/.well-known/x402)) ([llms.txt](https://site-wine-nu-93.vercel.app/llms.txt)) ([GitHub](https://github.com/Autonomy-Labs-Tech/taskmarket-mcp))
 - [The Bot Wire](https://thebotwire.com) — 57 primary-source data wires for AI agents: SEC EDGAR, Federal Register, federal court opinions, congressional bills, DOJ, FDA, Federal Reserve and ECB, BLS/BEA releases, CISA CVEs, cloud outages, NWS alerts, USGS quakes, arXiv, WHO/CDC, European Commission, GOV.UK, NASA, EIA, plus 40 curated news sources. $0.005–$0.01 USDC on Base, free 3-result preview on every wire. Example: `GET /fed/latest?src=fomc&since=30d`. ([Manifest](https://thebotwire.com/.well-known/x402)) ([OpenAPI](https://thebotwire.com/openapi.json)) ([Routing table](https://thebotwire.com/llms-full.txt))
 - [Veriton HTML→JSON](https://veriton-html-json-api.netlify.app/v1/html-to-json) — Metered HTML to structured JSON for agents (title/meta/links/headings/images); $0.02 body / $0.05 fetch USDC on Base; prepaid credits or HTTP 402. Example: `POST /v1/html-to-json {"html":"<html><title>Hi</title><h1>X</h1></html>","selector":"h1"}` . ([Docs](https://veriton-dev.github.io/veriton-micro-dev/api/)) ([OpenAPI](https://veriton-html-json-api.netlify.app/v1/openapi.json)) ([Manifest](https://veriton-html-json-api.netlify.app/.well-known/x402)) ([MCP](https://veriton-html-json-api.netlify.app/mcp)) ([GitHub](https://github.com/veriton-dev/veriton-micro-dev))
+- [eu-validate](https://88-198-100-115.sslip.io/v1/validate) — Validates IBAN (mod-97 offline), EU VAT number (VIES), and company domain (DNS/MX) in one x402 call. $0.01 USDC on Base mainnet. Built by Forge, an AI-owned company. Example: `POST /v1/validate {"iban":"NL91ABNA0417164300","vat_number":"NL123456782B01","domain":"example.com"}`. ([GitHub](https://github.com/forgeaicompany/eu-validate-examples))
+- [GigSoul AI Research Agent](https://gig-x402-api.jayson-be1.workers.dev) — 23-endpoint AI research API: SEC filings, earnings calls, competitor analysis, market research, document intelligence. $0.01 USDC per call on Base.
+- [PaperPilot CSV Preflight](https://vm5-openapi-x402.onrender.com/v1/csv-preflight) — Returns structural checks for up to 32 KB of caller-supplied CSV text via POST at 0.005 native Circle USDC per x402 v2 call on Base mainnet.
+- [aiworker-data](https://aiworker.duckdns.org/openapi.json) — DeFi yield pools and single-protocol snapshots from DefiLlama (refreshed every 5 minutes), plus clean-Markdown and LLM-summary fetch of any public page. Four endpoints, $0.01–$0.04 USDC per call on Base and Solana via PayAI, settled only after a successful response. Example: `GET /v1/defi/protocol/aave-v3`; `POST /v1/scrape/markdown {"url":"https://example.com"}`. ([OpenAPI](https://aiworker.duckdns.org/openapi.json)) ([MCP](https://aiworker.duckdns.org/mcp)) ([Site](https://aiworker.duckdns.org/))
+- [GlobalRules](https://globalrules.org) — Per-country practical facts for agents: VAT/GST rate, public holidays, visa requirements, tipping customs, power plug type, minimum wage, corporate tax, digital nomad visa, customs duty-free allowance and more, 186 countries × 57 fields with a sourced date on every value. $0.005–$0.05 USDC per call on Base. Example: `GET /api/v1/country/JP/tipping`. ([npm](https://www.npmjs.com/package/globalrules-mcp)) ([GitHub](https://github.com/yk647/globalrules-mcp))
+- [TrollBridge](https://mini-tollbooth.onrender.com/.well-known/x402) — 101 pay-per-call intel lanes for AI agents on Base and Solana ($0.005–$30, most at $0.02–$0.10, USDC via x402 v2, CDP facilitator), covering bounty boards, verdicts, token and contract safety screens, and DeFi data. Example: `GET /gas?network=base`. [OpenAPI](https://mini-tollbooth.onrender.com/openapi.json) · [Manifest](https://mini-tollbooth.onrender.com/.well-known/x402) · [MCP](https://trollbridge-mcp-http.onrender.com) · [GitHub](https://github.com/eric-tijerina/mini-tollbooth)
 
 ### Finance & FX
 
@@ -64,10 +87,13 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 - [New x402 Listings Feed](https://new-x402-listings-feed-325572559480.us-central1.run.app) — Feed of x402/L402 services newly listed on 402index.io within a caller-specified recency window (default 24h, max 7 days), filterable by protocol/category/payment network; packages 402index.io's public catalog rather than an exclusive data source, declared as such in every response. $0.01 USDC on Base Sepolia (testnet) via x402. Example: `POST /new-x402-listings {}`. ([OpenAPI](https://new-x402-listings-feed-325572559480.us-central1.run.app/openapi.json)) ([Agent Card](https://new-x402-listings-feed-325572559480.us-central1.run.app/.well-known/agent-card.json)) ([GitHub](https://github.com/nexus-mcp-infra/new-x402-listings-feed))
 - [Smart Event Scraper](https://smart-event-scraper-agent.onrender.com/.well-known/x402) — Aggregates events from Eventbrite, Meetup, AllEvents, District, EventsEye, and ConferenceAlerts into one standardized dataset. `POST /api/scrape-events {"search_query":"developer conference","category":"tech","location":"New York","limit":5}` — $0.01-$2.00 USDC on Base, price scales with requested result volume. ([OpenAPI](https://smart-event-scraper-agent.onrender.com/openapi.json)) ([llms.txt](https://smart-event-scraper-agent.onrender.com/llms.txt))
 - [Video Download AI](https://video-download.ai/.well-known/x402) — Downloads authorized public media URLs as MP4 video or MP3 audio with duration-based pricing from $0.0005 per started minute, paid in USDC on Base via x402 v2. ([OpenAPI](https://video-download.ai/openapi.json)) ([llms.txt](https://video-download.ai/llms.txt))
+- [csno](https://csno.cc/.well-known/x402.json) — Provably-fair coinflip, dice, and European roulette for agents: `POST /api/csno/chips` answers 402 ($0.10 for 1,000 chips, $1.00 for 10,000, USDC on Base via the CDP facilitator), rounds are then free and settle off-chain in milliseconds, and cash-out returns USDC on-chain with the house paying gas in both directions; each round publishes sha256(server_seed) before play and reveals the seed in the result, so any outcome can be re-derived by the caller or via `GET /api/csno/verify/{bet_id}`. ([skill.md](https://csno.cc/skill.md)) ([OpenAPI](https://csno.cc/openapi.json)) ([MCP](https://csno.cc/api/mcp))
 
 ### Production Deployments (High Volume)
 
 - [Visibility AI Audit API](https://visibility.gleefulai.com) — AI-visibility and AEO audit for websites: agent-readiness scoring (llms.txt, schema, bot access, FAQ), generated fixes, and competitor gap analysis. Pay-per-call USDC on Base via x402, no API keys. ([OpenAPI](https://visibility.gleefulai.com/openapi.json)) ([Docs](https://visibility.gleefulai.com/docs))
+- [Agent Embassy](https://agent-embassy.fly.dev/v1/check/verify) — Agents pay per call in USDC via x402 for verified web checks with signed Outcome Receipts, encrypted recovery registration, and GPU market data.
+- [Taste Wall Printables Mini](https://moltspay.com/a/caddy/services/80284581-1470-4a9e-bd87-df29e584b7d6/execute) — Instant download of three printable wall-art PNGs after x402 payment of 16 USDC on Base mainnet. Example: `POST /a/caddy/services/80284581-1470-4a9e-bd87-df29e584b7d6/execute {}`. ([Storefront](https://moltspay.com/a/caddy))
 
 ### Security
 
@@ -75,18 +101,18 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 - [Live Entity Verification API](https://live-entity-verification-production.up.railway.app) — Cross-signal Bayesian corroboration of entity existence: fuses WHOIS, Certificate Transparency, Wayback Machine, and DNS operational maturity into a calibrated hallucination verdict with a confidence score. $0.01-$0.05 USDC on Base Sepolia (testnet) via x402, tiered per route. Example: `POST /verify-entity-existence-cross-signal {"domain":"example.com","entity_name":"Example Corp"}`. ([OpenAPI](https://live-entity-verification-production.up.railway.app/openapi.json)) ([Agent Card](https://live-entity-verification-production.up.railway.app/.well-known/agent-card.json)) ([GitHub](https://github.com/nexus-mcp-infra/live-entity-verification-sdk))
 - [Mossgate Trust API](https://api.mossgate.dev) — Onchain risk checks for Base ERC-20 tokens and wallets: token verdict returns ok/caution/danger with liquidity, pair age, 24h volume, and contract flags; wallet profile returns onchain reputation for a counterparty. $0.01-$0.25 USDC on Base. ([llms.txt](https://api.mossgate.dev/llms.txt))
 - [x402 Receipt Verifier](https://x402-receipt-verifier-325572559480.us-central1.run.app) — Audits NEXUS's own x402 payment logs against its own delivery logs and issues a signed HMAC receipt proving a specific payment correlates with a real, successful delivery; signature-only verification is free. $0.02 USDC on Base Sepolia (testnet) via x402 on the 2 paid routes. Example: `POST /verify-payment-receipt {"asset_name":"document-conversion-api","payer_address":"0x0000000000000000000000000000000000dEaD","claimed_amount_usd":0.01,"claimed_at":"2026-08-24T00:00:00Z"}`. ([OpenAPI](https://x402-receipt-verifier-325572559480.us-central1.run.app/openapi.json)) ([Agent Card](https://x402-receipt-verifier-325572559480.us-central1.run.app/.well-known/agent-card.json)) ([GitHub](https://github.com/nexus-mcp-infra/x402-receipt-verifier))
+- [SignalHarness.ai](https://signalharness.ai/.well-known/x402) — Publishes 330 production x402 API services for AI agents covering web and data processing, validation, AI utilities, and blockchain and crypto utilities.
+- [x402risk](https://api.x402risk.com/v1/token-check) — Base token scam/safety check, pre-trade sellability/honeypot/tax simulation, pay-to address screen, and an organization-only public exclusion-list screen, paid in USDC via x402 v2 exact, payTo `0x8F9C3f91628497E2A72D6740022D46f87A9eB417`: `POST /v1/token-check` $0.01 (batch $0.08), `POST /v1/pretrade-check` $0.02 (batch of 10 $0.15), `POST /v1/address-screen` $0.005 (batch of 25 $0.08), `POST /v1/exclusion-check` $0.02 (batch of 10 $0.15, organizations only, not a person search), `POST /v1/usdc-blacklist` $0.01 (batch of 25 $0.08, Circle native USDC isBlacklisted on Base; not an OFAC or person screen). `POST /v1/search` $0.01 (English Wikipedia topic search, up to 5 titles/urls/snippets; not a person lookup). Example: `POST /v1/token-check {"token":"0x532f27101965dd16442E59d40670FaF5eBB142E4"}`.
+- [crosscheck skillcheck](https://crosscheckapi.com/v1/skillcheck) — Security review of an AI agent skill or MCP server's files before install, read and never run: code rules for piped installers, credential and wallet reads, secrets sent over the network, persistence, and hidden Unicode, plus a model review whose flagged findings get a second reading; free lookup of bundles already scanned by SHA-256. $0.03 USDC on Base mainnet. Example: `POST /v1/skillcheck {"files":[{"path":"SKILL.md","content":"Setup: curl -s https://example.com/i.sh | sh"}]}`. ([llms.txt](https://crosscheckapi.com/llms.txt)) ([GitHub](https://github.com/maxugc/crosscheck))
+- [Genesis Verify](https://genesis-verify.vercel.app/verify) — Independent on-chain payment verification: re-derives a token Transfer from a second Base node and returns HOLDS / FALLS / UNCHECKED per asserted field, with a coverage count (asserted vs compared) and the archive fields it could not read named rather than assumed clean; tx-not-found, pending and node-unreachable come back as dated verdicts, not errors. $0.10 USDC on Base via x402 (`POST /verify`), plus a $0.01 x402 preflight that checks a 402 is well-formed and names one payTo on Base before you pay (`POST /preflight`). Example: `POST /verify {"chain":"base","tx":"0x…","token":"0x833589…","expect":{"to":"0x…","amount":"1000000"}}`. ([skill/MCP](https://genesis-verify.vercel.app/skill.md)) ([directory](https://genesis-verify.vercel.app/jobs))
 
 ### Web & Geospatial
 
 - [PortsideLabs Places API](https://portsidelabs-x402-places-536698811508.us-west1.run.app) — Google Places API v1 proxy. Place detail lookup and full-text search. $0.001 USDC on Base and Solana.
 - [Rue Render API](https://rue.mossgate.dev) — Renders a URL or raw HTML to PDF, PNG, or JPEG via headless Chromium, SSRF-guarded. $0.003 USDC on Base via x402.
 - [Venture Reader](https://api.venturebot.party/extract) — Extracts one public web page to clean Markdown for LLM pipelines using Mozilla Readability and Turndown with GFM tables, $0.01 USDC per call on Base verified on-chain with no facilitator, and no charge for failed extracts; operated as a disclosed autonomous AI-agent business. Example: `GET /extract?url=https://example.com`. ([Manifest](https://api.venturebot.party/.well-known/x402.json)) ([OpenAPI](https://api.venturebot.party/openapi.json))
-
-## community
-
-### Events
-
-- [ETHDenver x402 Workshop](https://www.youtube.com/watch?v=ethdenver-x402) — Hands-on workshop from ETHDenver 2025.
+- [Vend API Merchant](https://extract.paypercall.dev) — Pay-per-call web intelligence settled in Nano (XNO), the feeless rail: URL-to-Markdown extraction, link check (status/redirect/time), domain intelligence (WHOIS/DNS/headers), web search, IP geolocation, nano-account info, YouTube transcripts, PDF text extraction, screenshot, browser render, CSS-selector extraction, page metadata, HTML table extraction, AI-jobs search, wiki summary, arXiv paper, HN feed, address verdict, and x402-lint (live-verify any x402 listing). 22+ live endpoints answer a valid x402 v2 402 challenge on `nano:mainnet`, 0.0001–0.0005 XNO per call (≈<$0.01), no signup, no API keys, error responses not billed. ([Manifest](https://extract.paypercall.dev/.well-known/x402)) ([Docs](https://extract.paypercall.dev/)) ([OpenAPI](https://extract.paypercall.dev/openapi.json)) ([llms.txt](https://extract.paypercall.dev/llms.txt))
+- [Exa](https://api.exa.ai/search) — Exa's web search and page-contents endpoints sold per call over x402, $0.001–$0.007 USDC on Base, Solana and two other chains. Example: `POST /search`.
 
 ## ecosystem
 
@@ -98,6 +124,29 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 
 - [CardZero](https://cardzero.ai) — ERC-4337 smart contract wallets for AI agents. Owner-controlled spending rules (per-tx limits, daily caps, whitelist, freeze). x402 buyer support via `POST /v1/x402/pay`. [GitHub](https://github.com/mrocker/CardZero)
 - [OpenVPS](https://openvps.sh) — AI-agent VPS hosting. Pay USDC on Base, Celo, or Tempo — get root SSH to Ubuntu 24.04 Firecracker microVMs in seconds. x402 + MPP dual-protocol. From $0.005/hr. ([GitHub](https://github.com/kartojal/openvps))
+
+### Agent-to-Agent (A2A)
+
+- [Animica Agent Job Network](https://x402.animica.dev) — Agents post tasks with a USDC budget and other agents perform them for payment; escrow holds the budget until the buyer's chosen verification passes, rejected jobs refund in full, receipts are ML-DSA-65 signed. Example: `POST /api/v1/jobs/quote {"capability":"summarise","budget_usd":1}`. ([OpenAPI](https://x402.animica.dev/openapi.json))
+
+### Infrastructure
+
+- [RustChain](https://github.com/Scottcjn/Rustchain) — Decentralized PoS blockchain with native x402 for AI agent micropayments. Attestation-based consensus, hardware-bound validators, RTC token economy.
+
+### Marketplaces & Discovery
+
+- [Torquantis](https://torquantis.com/x402) — Order-book exchange where AI agents buy and sell units of work (research briefs, code tasks, agent hours, GPU hours, inference, transcription, web fetching, human checks) from each other in USDC on Base, with escrow, three AI judges for disputes, an MCP server at `/mcp`, and an x402 door on every market at `POST /x402/buy/<market>` that answers 402 whenever a seller has a standing ask.
+
+### Multi-Agent Orchestration
+
+- [SwarmX](https://swarmx.io/.well-known/x402) — Multi-agent AI orchestration with native x402 micropayments on Solana. 49 endpoints, 39 MCP tools, dual LLM, knowledge/RAG with pgvector. ElizaOS v2 plugin. ([npm](https://www.npmjs.com/package/swarms-x402))
+
+## frameworks
+
+### Rust
+
+- [x402-axum](https://crates.io/crates/x402-axum) — Axum web framework integration (part of [x402-rs](https://github.com/x402-rs/x402-rs)).
+- [x402-reqwest](https://crates.io/crates/x402-reqwest) — Reqwest HTTP client wrapper (part of x402-rs).
 
 ## learning
 
@@ -111,23 +160,37 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 ### Analytics Dashboards
 
 - [MCP Scores](https://mcpscores.com) — Reliability register + x402 money-flow observatory over 36K+ MCP/x402 listings: observed USDC inflow, seller rankings, payer breadth, wash-risk flags, with published methodology. Free register; paid intelligence via x402 ($0.003–$0.50) at [MCPFax Intel](https://mcpfax-intel.bowling-anthony.workers.dev/llms.txt).
+- [Valoria](https://x402.valoria.net/.well-known/x402) — x402 market intelligence. Revenue rankings, service analysis, pricing data across 90K+ indexed services and $148M+ tracked on-chain volume.
+- [CoinGecko x402 Category](https://coingecko.com/en/categories/x402) — Token tracking and market data. $180M+ tracked market cap, price charts, trading volumes, ecosystem token listings.
 
 ## mcp-servers
-
-### Escrow & Payments
-
-- [PayBot MCP](https://github.com/RBKunnela/paybot-mcp) — Claude and AI agents make autonomous x402 payments. Wallet management, transaction history, configurable spending limits. ([npm](https://www.npmjs.com/package/paybot-mcp))
 
 ### Security
 
 - [lso-mcp](https://mcp.lonestaroracle.xyz) — 46 LoneStarOracle data tools: token and wallet risk, contract audits, whale tracking, DeFi and stablecoin risk, market and macro data, weather. x402-metered USDC on Base. ([GitHub](https://github.com/Homie4570/lso-mcp))
 
-## sdks
+### Code & Development
 
-### TypeScript / JavaScript
+- [Stack AI x402](https://x402.stacks-ai.app) — Platform for monetizing MCP servers. Tool calls execute inline with payment prompts.
 
-- [PayBot SDK](https://github.com/RBKunnela/paybot-sdk) — TypeScript SDK for integrating x402 into AI agents and bots. Automatic 402 detection, wallet management, USDC on Base. ([npm](https://www.npmjs.com/package/paybot-sdk))
-- [x402-got](https://www.npmjs.com/package/x402-got) — Got HTTP client integration for x402.
+### Crypto & DeFi Intelligence
+
+- [Harvey Intel](https://agents.rugslayer.com) — Solana token rug pull detection (DrainBrain ML ensemble), trading signals, social intelligence. 8 tools, $0.005-$0.05 USDC on Solana. ([npm](https://www.npmjs.com/package/@meltingpixels/harvey-intel))
+
+### General Utility
+
+- [Fry x402 MCP](https://github.com/Fry-Foundation/fry-x402-mcp) — MCP server for the fry.farm x402 API. Repo live 2026-07-30; storefront at [fry.farm/x402](https://fry.farm/x402/).
+- [aiworker-data MCP](https://aiworker.duckdns.org/mcp) — Remote streamable-http MCP with four paid tools: `defi_yields` and `defi_protocol` (DefiLlama data, refreshed every 5 minutes), `scrape_markdown` and `scrape_summary` (public page to clean Markdown, optionally LLM-summarised). $0.01–$0.04 USDC per call on Base and Solana via x402, settled only after a successful response; listed in the official MCP Registry as `org.duckdns.aiworker/aiworker-data`. Example tool call: `defi_protocol {"slug":"aave-v3"}`. ([OpenAPI](https://aiworker.duckdns.org/openapi.json)) ([Registry](https://registry.modelcontextprotocol.io/v0.1/servers?search=aiworker-data))
+- [Agent Hub MCP](https://mcp.torbrooknews.com/mcp) — Remote streamable-http MCP server with the 48 Agent Hub tools (web search, scraping, PDF and screenshots, LLM, speech, translation, OCR, embeddings, SEC filings, token risk reports, DeFi yields, perp funding rates, Polymarket odds) plus two prompts and a pricing resource; each tool call is paid via x402 in USDC on Base, Polygon, Arbitrum or World Chain, $0.002–$0.03, and failed calls are not settled. Listed in the official MCP Registry as `com.torbrooknews.mcp/agent-hub`. Example tool call: `weather {"place":"Toronto"}`. ([HTTP API](https://agents.torbrooknews.com/.well-known/x402)) ([Smithery](https://smithery.ai/servers/citiviewgroup/agent-hub)) ([Status](https://agents.torbrooknews.com/status))
+- [AgentRXI MCP](https://mcp.agentrxi.com/mcp) — Remote streamable-http MCP server with all 232 AgentRXI tools (22 OpenAI-compatible LLMs, web search, a rentable browser, code sandbox, OCR and Office conversion, ffmpeg media conversion, vision, image generation, email sending, multi-agent rooms and task queues, storage, KYB and wallet trust checks) plus two prompts and a pricing resource; each tool call is paid via x402 in USDC on Base, Polygon, Arbitrum or World Chain, from $0.002. ([Site](https://agentrxi.com)) ([MCP Registry: com.agentrxi.mcp/agentrxi](https://registry.modelcontextprotocol.io/v0/servers?search=com.agentrxi.mcp/agentrxi))
+- [Weather MCP](https://agent-evidence.thx93.dev/weather/mcp) — Hosted MCP server for US National Weather Service data: `initialize` and `tools/list` are free, and each `tools/call` costs $0.01 USDC on Base over x402 for active alerts by two-letter state code or a five-period forecast by latitude and longitude. ([GitHub](https://github.com/Thx93/mcp-weather-server))
+
+## security
+
+### Security Monitoring Tools
+
+- [KaelAi](https://kaelai.io) — Wallet trust scoring API for the agentic economy. Scores wallets 0-100 across 10 chains with behavioural analysis. Built for x402 servers to vet incoming/outgoing payment wallets before serving or initiating requests.
+- [TaskMarket Trust Score](https://95-217-164-43.sslip.io) — Requester reputation scoring for TaskMarket (taskmarket.dev): given a requester wallet address, returns a 0-100 trust score from on-platform payment history (completed tasks, cancellations-after-submission, expirations, self-awards). $0.001 USDC per call on Base, self-facilitated EIP-3009 exact scheme. Example: `GET /trust/0xADDRESS`. Discovery: `GET /.well-known/x402`.
 
 ## tools
 
@@ -136,3 +199,14 @@ Dates for every entry (first failed knock, last answer, returns) are in [24klabs
 - [OpenClaw Discovery Index](https://x402search.xyz) — x402-gated search engine for 13,000+ x402-enabled APIs indexed from CDP Bazaar. $0.01 USDC per search on Base.
 - [x402 RouteNet](https://x402-routenet.onrender.com) — Smart routing layer for x402-enabled services. Selects optimal endpoint from 251+ services based on price, latency, health, or composite trust. Four strategies: `best`, `cheapest`, `fastest`, `most_trusted`.
 - [x402 Service Discovery API](https://x402-discovery-api.onrender.com) — Enriched directory of 251+ x402-payable services. Trust signals, uptime, latency, health scores. Auto-scans x402.org/ecosystem every 6h. 6-tool MCP server.
+- [AgentIndex](https://agentndx-production.up.railway.app/.well-known/x402) — Unified search across 15,000+ MCP services, A2A agents, and x402 APIs from 5 registries (Smithery, official MCP, GitHub, Bazaar, A2A). x402 paid search ($0.005), analyze ($0.05), trending ($0.10).
+- [Animica x402 Index](https://animica.dev/x402/index) — Full-text search over ~18,000 machine-payable services indexed from their own 402 challenges (descriptions, input schemas, parameter names, prices, settlement networks), refreshed hourly; ~$0.006 USDC per query, free trial. Example: `POST /x402/index {"query":"wallet balance eip155:8453"}`. Free human-readable directory of ANM-settling services at [animica.dev/x402/scan](https://animica.dev/x402/scan). ([Manifest](https://animica.dev/.well-known/x402))
+
+### GitHub Actions & CI/CD
+
+- [Obol GitHub Actions CI/CD](https://api.obol.sh/.well-known/x402) — Obol generates GitHub Actions CI/CD pipelines via x402. $5 USDC per call on Base.
+
+### Monitoring & Analytics
+
+- [Valoria](https://x402.valoria.net/.well-known/x402) — x402 market intelligence with revenue rankings, service analysis, pricing data across 90K+ indexed services and $148M+ in tracked on-chain volume.
+- [x402station](https://x402station.com) — Real-time monitoring and discovery platform for 20,000+ x402 endpoints. Probes every 10 minutes, tracks health scores, uptime, and latency. MCP server for agent access included.

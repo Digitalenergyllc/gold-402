@@ -29,6 +29,7 @@ Client and server-side libraries for building with x402. Start with the official
 
 ### HTTP Clients
 - [cipher-x402-client](https://github.com/cryptomotifs/cipher-x402-client) — Lightweight TS/JS x402 v2 client. Zero runtime deps, native fetch, ESM + CJS dual build. 34 tests, 89% coverage. Node 18+ / browsers. Optional `ethers` peer dep for signing.
+- [x402-got](https://www.npmjs.com/package/x402-got) — Got HTTP client integration for x402.
 
 ### AI Agent SDKs
 - [x402-mcp](https://www.npmjs.com/package/x402-mcp) — Vercel's library for adding x402 paywalls to MCP servers via the AI SDK. The `paidTool` primitive — declare a price on any MCP tool, require payment before execution. ([Blog](https://vercel.com/blog/introducing-x402-mcp-open-protocol-payments-for-mcp-tools))
@@ -36,6 +37,7 @@ Client and server-side libraries for building with x402. Start with the official
 - [Azeth SDK](https://github.com/azeth-protocol/sdk) — TypeScript SDK with x402 client (`fetch402`), ERC-4337 smart accounts, on-chain reputation feedback, and ERC-8004 service discovery. ([npm](https://www.npmjs.com/package/@azeth/sdk))
 - [MoltsPay](https://github.com/Yaqing2023/moltspay) — Payment infrastructure for AI agents. CLI, TypeScript SDK, LangChain/CrewAI integrations. Gasless payments on Base, Polygon, Solana, BNB, Tempo. ([npm](https://www.npmjs.com/package/moltspay))
 - [AffixIO](https://www.npmjs.com/package/affixio) — TypeScript Agentic Pay Kit with x402BeforePay host-side action attestation before pay (signed yes/no on host; not person KYC), agenticPay, mcpToolGate, and KYA createAgentTrust. ([GitHub](https://github.com/AffixIO/SDK)) ([docs](https://www.affix-io.com/agent-trust/))
+- [PayBot SDK](https://github.com/RBKunnela/paybot-sdk) — TypeScript SDK for integrating x402 into AI agents and bots. Automatic 402 detection, wallet management, USDC on Base. ([npm](https://www.npmjs.com/package/paybot-sdk))
 
 ### Privacy
 - [PRXVT Privacy SDK](https://github.com/prxvt/sdk) — Privacy layer for x402. Fresh burner wallet per payment (unlinkable), Groth16 zero-knowledge proofs, AES-256-GCM encrypted notes, cross-chain deposits (Base to Polygon). ([Website](https://www.prxvt.com/))

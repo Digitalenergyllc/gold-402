@@ -37,14 +37,6 @@ Server-side integrations for accepting x402 payments, and agent frameworks with 
 
 ---
 
-## Rust
-
-### Axum
-- [x402-axum](https://crates.io/crates/x402-axum) — Axum web framework integration (part of [x402-rs](https://github.com/x402-rs/x402-rs)).
-- [x402-reqwest](https://crates.io/crates/x402-reqwest) — Reqwest HTTP client wrapper (part of x402-rs).
-
----
-
 ## Ruby / Rails
 
 - [x402-rails](https://github.com/quiknode-labs/x402-rails) — Accept instant blockchain micropayments in Rails applications using x402. QuickNode Labs official Rails integration. 36★
